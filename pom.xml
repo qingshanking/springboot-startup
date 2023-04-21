@@ -15,6 +15,8 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <xnio.version>3.8.9.Final</xnio.version>
+        <lombok.version>1.18.26</lombok.version>
+        <hutool.version>5.8.18</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -57,6 +59,20 @@
             <groupId>org.jboss.xnio</groupId>
             <artifactId>xnio-nio</artifactId>
             <version>${xnio.version}</version>
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--HuTool-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 
