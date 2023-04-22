@@ -11,3 +11,22 @@ server:
     buffer-size: 1024
     # 是否分配的直接内存
     direct-buffers: true
+
+knife4j:
+  enable: true
+  openapi:
+    title: SpringBoot单体脚手架接口文档
+    description: "**SpringBoot**单体脚手架**接口文档**"
+    email: qingshanking@vip.qq.com
+    concat: xiaose
+    url: http://localhost:23421/doc.html
+    version: v4.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      test1:
+        group-name: 测试模块
+        api-rule: package
+        api-rule-resources:
+          - com.yanqingshan.admin.module.test
