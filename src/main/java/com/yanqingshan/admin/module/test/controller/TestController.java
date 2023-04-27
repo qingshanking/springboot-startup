@@ -2,7 +2,7 @@ package com.yanqingshan.admin.module.test.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.yanqingshan.admin.module.test.controller.model.dto.TestRequest;
+import com.yanqingshan.admin.module.test.model.dto.TestRequest;
 import com.yanqingshan.admin.util.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
