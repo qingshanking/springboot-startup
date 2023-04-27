@@ -52,16 +52,32 @@ public class WebConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
         registry.addResourceHandler("/doc.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
+
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
         registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("classpath:/META-INF/resources/favicon.ico");
+
         registry.addResourceHandler("/css/**")
                 .addResourceLocations("classpath:/static/css/");
+
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("classpath:/static/img/");
+
+        registry.addResourceHandler("/swagger/**")
+                .addResourceLocations("classpath:/META-INF/resources/swagger*");
+
+        registry.addResourceHandler("/v2/api-docs/**")
+                .addResourceLocations("classpath:/META-INF/resources/v2/api-docs/");
+
+        registry.addResourceHandler("/swagger-resources/**")
+                .addResourceLocations("classpath:/META-INF/resources/swagger-resources/");
         //registry.addResourceHandler("/web/**").addResourceLocations("classpath:/static/");
         super.addResourceHandlers(registry);
     }
