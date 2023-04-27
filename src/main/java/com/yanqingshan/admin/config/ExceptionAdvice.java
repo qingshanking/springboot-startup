@@ -1,5 +1,6 @@
 package com.yanqingshan.admin.config;
 
+import cn.dev33.satoken.exception.NotLoginException;
 import com.yanqingshan.admin.constant.enums.ServiceExceptionEnum;
 import com.yanqingshan.admin.util.R;
 import lombok.extern.slf4j.Slf4j;
@@ -36,8 +37,7 @@ public class ExceptionAdvice {
     public R missingServletRequestParameterExceptionHandler(HttpServletRequest req, MissingServletRequestParameterException ex) {
         log.error("[missingServletRequestParameterExceptionHandler]", ex);
         // 包装 CommonResult 结果
-        return R.failed(ServiceExceptionEnum.MISSING_REQUEST_PARAM_ERROR.getCode(),null,
-                ServiceExceptionEnum.MISSING_REQUEST_PARAM_ERROR.getMessage());
+        return R.failed(ServiceExceptionEnum.MISSING_REQUEST_PARAM_ERROR.getMessage());
     }
 
     @ResponseBody
@@ -55,8 +55,7 @@ public class ExceptionAdvice {
             detailMessage.append(constraintViolation.getMessage());
         }
         // 包装 CommonResult 结果
-        return R.failed(ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getCode(),null,
-                ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
+        return R.failed(ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
     }
 
     @ResponseBody
@@ -75,8 +74,7 @@ public class ExceptionAdvice {
             detailMessage.append(objectError.getDefaultMessage());
         }
         // 包装 CommonResult 结果
-        return R.failed(ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getCode(),null,
-                ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
+        return R.failed(ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
     }
 
     @ResponseBody
@@ -95,12 +93,41 @@ public class ExceptionAdvice {
             detailMessage.append(objectError.getDefaultMessage());
         }
         // 包装 CommonResult 结果
-        return R.failed(ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getCode(),null,
-                ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
+        return R.failed(ServiceExceptionEnum.INVALID_REQUEST_PARAM_ERROR.getMessage() + ":" + detailMessage.toString());
+    }
+
+    /**
+     * Sa-Token 全局异常拦截（拦截项目中的NotLoginException异常）
+     * @param nle
+     * @return
+     */
+    @ExceptionHandler(NotLoginException.class)
+    public R handlerNotLoginException(NotLoginException nle) {
+        // 打印堆栈，以供调试
+        nle.printStackTrace();
+
+        // 判断场景值，定制化异常信息
+        String message = "";
+        if (nle.getType().equals(NotLoginException.NOT_TOKEN)) {
+            message = "未提供token";
+        } else if (nle.getType().equals(NotLoginException.INVALID_TOKEN)) {
+            message = "token无效";
+        } else if (nle.getType().equals(NotLoginException.TOKEN_TIMEOUT)) {
+            message = "token已过期";
+        } else if (nle.getType().equals(NotLoginException.BE_REPLACED)) {
+            message = "token已被顶下线";
+        } else if (nle.getType().equals(NotLoginException.KICK_OUT)) {
+            message = "token已被踢下线";
+        } else {
+            message = "当前会话未登录";
+        }
+        // 返回给前端
+        return R.failed(message);
     }
 
     /**
      * 处理其它 Exception 异常
+     *
      * @param e
      * @return
      */
