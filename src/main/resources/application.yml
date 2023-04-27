@@ -19,6 +19,8 @@ spring:
 logging:
   file:
     path: logs
+mybatis-plus:
+  mapper-locations: classpath*:com/yanqingshan/admin/modules/**/xml/*Mapper.xml
 
 knife4j:
   openapi:

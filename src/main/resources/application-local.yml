@@ -1,3 +1,15 @@
 knife4j:
   enable: true
   url: http://localhost:23421/doc.html
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.57.110:3306/boot-startup?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    username: test
+    password: 123456
+
+mybatis-plus:
+  configuration:
+    # 日志打印配置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

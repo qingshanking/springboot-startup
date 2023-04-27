@@ -16,6 +16,7 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <xnio.version>3.8.9.Final</xnio.version>
         <lombok.version>1.18.26</lombok.version>
         <hutool.version>5.8.18</hutool.version>
@@ -23,6 +24,9 @@
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <knife4j.version>4.1.0</knife4j.version>
         <sa-token.version>1.34.0</sa-token.version>
+        <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
+        <mysql.connector.version>8.0.33</mysql.connector.version>
+
     </properties>
 
     <dependencyManagement>
@@ -105,10 +109,23 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang3.version}</version>
         </dependency>
+        <!--knife4j-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>
+        </dependency>
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
+        </dependency>
+        <!-- mysql-connector -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.connector.version}</version>
         </dependency>
 
         <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
