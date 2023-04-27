@@ -5,7 +5,7 @@
     <id>bin</id>
     <!-- 打包的类型，如果有N个，将会打N个类型的包 -->
     <formats>
-        <format>tar.gz</format>
+        <!--<format>tar.gz</format>-->
         <format>zip</format>
     </formats>
 
@@ -31,11 +31,11 @@
         </fileSet>
 
         <!-- 指定输出target/excel中的配置文件到excel目录中 -->
-<!--        <fileSet>-->
-<!--            <directory>${build.outputDirectory}/excel</directory>-->
-<!--            <outputDirectory>excel</outputDirectory>-->
-<!--            <fileMode>0644</fileMode>-->
-<!--        </fileSet>-->
+        <!--        <fileSet>-->
+        <!--            <directory>${build.outputDirectory}/excel</directory>-->
+        <!--            <outputDirectory>excel</outputDirectory>-->
+        <!--            <fileMode>0644</fileMode>-->
+        <!--        </fileSet>-->
 
         <!-- 指定输出target/logs中的配置文件到logs目录中 -->
         <fileSet>

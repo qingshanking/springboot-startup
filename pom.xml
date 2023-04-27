@@ -6,7 +6,7 @@
 
     <groupId>com.yanqingshan</groupId>
     <artifactId>springboot-startup</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <description>SpringBoot单体脚手架</description>
 
@@ -128,7 +128,7 @@
 
     <build>
         <!-- 打包后的启动jar名称 -->
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.artifactId}-${profileActive}-${project.version}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -149,6 +149,7 @@
                 <targetPath>config</targetPath>
                 <includes>
                     <include>application.yml</include>
+                    <include>application-${profileActive}.yml</include>
                 </includes>
             </resource>
 
@@ -287,6 +288,39 @@
             </plugin>
         </plugins>
     </build>
+
+    <!--MAVEN打包选择运行环境-->
+    <!-- 1:local(默认) 本地 2:dev:开发环境 3:test 4:uat 用户验收测试 5.pro:生产环境-->
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <profileActive>local</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profileActive>prod</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
 
     <repositories>
         <repository>

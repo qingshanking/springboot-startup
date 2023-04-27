@@ -1,0 +1,3 @@
+knife4j:
+  enable: true
+  url: http://localhost:23421/doc.html
