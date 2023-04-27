@@ -17,5 +17,6 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
         log.info("启动成功：Sa-Token配置如下：" + SaManager.getConfig());
+        log.info("swagger doc:http://localhost:23421/doc.html");
     }
 }
