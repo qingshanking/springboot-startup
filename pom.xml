@@ -348,17 +348,24 @@
 
     <repositories>
         <repository>
-            <id>nexus</id>
+            <id>maven-nexus</id>
+            <name>maven-nexus</name>
             <url>https://nexus.bcrjl.com/repository/maven-public/</url>
+            <layout>default</layout>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
-        </repository>
-        <repository>
-            <id>nexus-release</id>
-            <name>Release Repository</name>
-            <url>https://nexus.bcrjl.com/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://nexus.bcrjl.com/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
