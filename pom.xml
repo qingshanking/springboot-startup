@@ -59,6 +59,13 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!--   Spring Boot 配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- 保证 Spring AOP 相关的依赖包 -->
         <dependency>
             <groupId>org.springframework</groupId>
