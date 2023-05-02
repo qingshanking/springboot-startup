@@ -4,7 +4,7 @@ import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.yanqingshan.admin.util.R;
+import com.yanqingshan.admin.common.core.domain.R;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

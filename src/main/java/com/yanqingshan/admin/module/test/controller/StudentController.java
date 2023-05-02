@@ -6,7 +6,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.yanqingshan.admin.module.test.model.domain.Student;
 import com.yanqingshan.admin.module.test.model.dto.StudentRequest;
 import com.yanqingshan.admin.module.test.service.StudentService;
-import com.yanqingshan.admin.util.R;
+import com.yanqingshan.admin.common.core.domain.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;

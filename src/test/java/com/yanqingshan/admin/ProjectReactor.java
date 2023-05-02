@@ -3,7 +3,7 @@ package com.yanqingshan.admin;
 import cn.hutool.core.io.FileTypeUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
-import com.yanqingshan.admin.util.SetUtils;
+import com.yanqingshan.admin.common.utils.SetUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 

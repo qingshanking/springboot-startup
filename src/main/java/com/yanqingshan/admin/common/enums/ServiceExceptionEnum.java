@@ -1,4 +1,4 @@
-package com.yanqingshan.admin.constant.enums;
+package com.yanqingshan.admin.common.enums;
 
 /**
  * @Classname ServiceExceptionEnum

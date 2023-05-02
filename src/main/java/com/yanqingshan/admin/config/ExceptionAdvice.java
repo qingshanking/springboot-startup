@@ -1,8 +1,8 @@
 package com.yanqingshan.admin.config;
 
 import cn.dev33.satoken.exception.NotLoginException;
-import com.yanqingshan.admin.constant.enums.ServiceExceptionEnum;
-import com.yanqingshan.admin.util.R;
+import com.yanqingshan.admin.common.enums.ServiceExceptionEnum;
+import com.yanqingshan.admin.common.core.domain.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;

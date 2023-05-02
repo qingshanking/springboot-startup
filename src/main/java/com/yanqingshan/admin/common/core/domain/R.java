@@ -1,6 +1,6 @@
-package com.yanqingshan.admin.util;
+package com.yanqingshan.admin.common.core.domain;
 
-import com.yanqingshan.admin.constant.CommonConstants;
+import com.yanqingshan.admin.common.constant.CommonConstants;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 /**
  * 自定义的统一返回对象
+ * <p>
+ * 响应信息主体
  *
  * @author yanqs
  * @date 2023年04月23日 15:50

@@ -1,4 +1,4 @@
-package com.yanqingshan.admin.util;
+package com.yanqingshan.admin.common.utils;
 
 import java.util.Arrays;
 import java.util.HashSet;
