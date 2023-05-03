@@ -5,9 +5,17 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.yanqingshan.admin.common.core.domain.R;
+import com.yanqingshan.admin.module.auth.model.dto.LoginUserRequestVO;
+import com.yanqingshan.admin.module.system.model.domain.SysUser;
+import com.yanqingshan.admin.module.system.service.SysUserService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * 认证控制器
@@ -22,10 +30,17 @@ import org.springframework.web.bind.annotation.RestController;
 @ApiSupport(order = 1)
 @RestController
 public class AuthController {
+
+    @Resource
+    private SysUserService sysUserService;
     // 测试登录
     @PostMapping("login")
-    public R<SaTokenInfo> login() {
-        StpUtil.login(10001);
+    public R<SaTokenInfo> login(@Valid @RequestBody LoginUserRequestVO request) {
+        SysUser user = sysUserService.login(request.getUsername());
+        if(Objects.isNull(user)){
+            return R.failed("账号不存在或密码错误");
+        }
+        StpUtil.login(user.getId());
         return R.ok(StpUtil.getTokenInfo());
     }
 
