@@ -70,4 +70,14 @@ public class R<T> implements Serializable {
     public boolean ifOk() {
         return this.code == CommonConstants.SUCCESS;
     }
+
+    /**
+     * 返回R
+     *
+     * @param flag 成功状态
+     * @return R
+     */
+    public static <T> R<T> status(boolean flag) {
+        return flag ? ok() : failed();
+    }
 }
