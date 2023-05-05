@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
  * @Created by yanqs
  */
 @Data
-public class TestRequest {
+public class TestParam {
     /**
      * 账号
      */

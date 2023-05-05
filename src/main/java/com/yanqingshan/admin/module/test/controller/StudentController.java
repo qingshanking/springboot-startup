@@ -3,10 +3,11 @@ package com.yanqingshan.admin.module.test.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.yanqingshan.admin.module.test.model.domain.Student;
-import com.yanqingshan.admin.module.test.model.dto.StudentRequest;
-import com.yanqingshan.admin.module.test.service.StudentService;
+import com.yanqingshan.admin.common.constant.AppConstant;
 import com.yanqingshan.admin.common.core.domain.R;
+import com.yanqingshan.admin.module.test.model.domain.Student;
+import com.yanqingshan.admin.module.test.model.dto.StudentParam;
+import com.yanqingshan.admin.module.test.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ import java.util.List;
 @Api(tags = "学生测试接口")
 @ApiSupport(order = 2)
 @RestController
-@RequestMapping("/student")
+@RequestMapping(AppConstant.APPLICATION_TEST + "/student")
 public class StudentController {
 
     @Resource
@@ -41,9 +42,9 @@ public class StudentController {
     @ApiOperationSupport(order = 2)
     @ApiOperation(value = "添加学生")
     @PostMapping("/add")
-    public R add(@Valid @RequestBody StudentRequest request) {
+    public R add(@Valid @RequestBody StudentParam request) {
         Student student = new Student();
-        BeanUtil.copyProperties(request,student);
+        BeanUtil.copyProperties(request, student);
         return R.ok(studentService.save(student));
     }
 }

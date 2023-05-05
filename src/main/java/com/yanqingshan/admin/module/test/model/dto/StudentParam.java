@@ -1,6 +1,5 @@
 package com.yanqingshan.admin.module.test.model.dto;
 
-import com.yanqingshan.admin.module.test.model.domain.Student;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -14,7 +13,7 @@ import javax.validation.constraints.NotNull;
  * @Created by yanqs
  */
 @Data
-public class StudentRequest {
+public class StudentParam {
     @NotEmpty(message = "姓名不能为空")
     private String name;
 

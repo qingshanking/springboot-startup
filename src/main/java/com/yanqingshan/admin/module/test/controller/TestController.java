@@ -2,7 +2,8 @@ package com.yanqingshan.admin.module.test.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import com.yanqingshan.admin.module.test.model.dto.TestRequest;
+import com.yanqingshan.admin.common.constant.AppConstant;
+import com.yanqingshan.admin.module.test.model.dto.TestParam;
 import com.yanqingshan.admin.common.core.domain.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 @Api(tags = "测试接口")
 @ApiSupport(order = 1)
 @RestController
-@RequestMapping("/test")
+@RequestMapping(AppConstant.APPLICATION_TEST)
 public class TestController {
     @ApiOperationSupport(order = 1)
     @ApiOperation(value = "输出文字")
@@ -40,7 +41,7 @@ public class TestController {
     @ApiOperationSupport(order = 3)
     @ApiOperation(value = "验证请求参数")
     @PostMapping("/verify-user")
-    public R testVerify(@Valid @RequestBody TestRequest request) {
+    public R testVerify(@Valid @RequestBody TestParam request) {
         return R.ok("用户“"+request.getUsername()+"”验证通过");
     }
 }

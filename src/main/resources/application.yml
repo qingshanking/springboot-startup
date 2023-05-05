@@ -48,6 +48,11 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.yanqingshan.admin.module.auth
+      system:
+        group-name: 系统模块
+        api-rule: package
+        api-rule-resources:
+          - com.yanqingshan.admin.module.system
       test1:
         group-name: 测试模块
         api-rule: package

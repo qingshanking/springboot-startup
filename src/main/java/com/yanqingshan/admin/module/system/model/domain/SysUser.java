@@ -62,7 +62,7 @@ public class SysUser extends BaseEntity {
     /**
      * 用户密码
      */
-    @TableField("password")
+    @TableField(value = "password")
     private String password;
 
 }
