@@ -1,5 +1,6 @@
 package com.yanqingshan.admin.module.auth.controller;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
@@ -30,7 +31,7 @@ import java.util.Objects;
  * @Created by yanqs
  */
 @Api(tags = "认证模块")
-@ApiSupport(order = 1)
+@ApiSupport(order = 2)
 @RestController
 @RequestMapping(AppConstant.APPLICATION_AUTH)
 public class AuthController {
@@ -39,6 +40,7 @@ public class AuthController {
     private SysUserService sysUserService;
 
     // 测试登录
+    @SaIgnore
     @PostMapping("login")
     public R<SaTokenInfo> login(@Valid @RequestBody LoginUserParam request) {
         SysUser user = sysUserService.login(request.getUsername());

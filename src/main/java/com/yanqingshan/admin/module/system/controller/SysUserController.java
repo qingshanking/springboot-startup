@@ -27,7 +27,7 @@ import javax.validation.Valid;
  * @date 2023年05月05日 16:04
  */
 @Api(tags = "用户模块")
-@ApiSupport(order = 1)
+@ApiSupport(order = 3)
 @RestController
 @RequestMapping(AppConstant.APPLICATION_SYSTEM + "/user")
 public class SysUserController {
