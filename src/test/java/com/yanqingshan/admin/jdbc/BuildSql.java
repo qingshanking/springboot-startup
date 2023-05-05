@@ -1,6 +1,7 @@
 package com.yanqingshan.admin.jdbc;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @author yanqs
  * @date 2023年04月28日 9:31
  */
+@Slf4j
 @SpringBootTest
 class BuildSql {
 
@@ -36,6 +38,7 @@ class BuildSql {
 
         // 查询所有表格名字
         ResultSet result = stmt.executeQuery("SHOW TABLES");
+        // 备份的SQL文件
         FileWriter writer = new FileWriter("backup.sql");
 
         // 循环遍历所有表 存表
@@ -44,6 +47,7 @@ class BuildSql {
             tableNameList.add(result.getString(1));
         }
         for (String tableName : tableNameList) {
+            log.info("开始备份“{}”表结构", tableName);
             // 在输出文件中写入创建表格SQL语句
             ResultSet rs = stmt.executeQuery("SHOW CREATE TABLE " + tableName);
             if (rs.next()) {
@@ -53,6 +57,7 @@ class BuildSql {
             // 循环遍历表格中的所有行来写入数据
             rs = stmt.executeQuery("SELECT * FROM " + tableName);
             int columnCount = rs.getMetaData().getColumnCount();
+            log.info("开始生成“{}”表数据", tableName);
             while (rs.next()) {
                 writer.write("INSERT INTO " + tableName + " VALUES (");
                 for (int i = 1; i <= columnCount; i++) {
@@ -70,5 +75,6 @@ class BuildSql {
         result.close();
         stmt.close();
         conn.close();
+        log.info("备份完成");
     }
 }
