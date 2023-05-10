@@ -1,5 +1,6 @@
 package com.yanqingshan.admin.common.core.mybatis.handler;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.yanqingshan.admin.common.core.domain.BaseEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,7 @@ import java.util.Objects;
 public class DefaultDBFieldHandler implements MetaObjectHandler {
     /**
      * 插入填充字段
+     *
      * @param metaObject
      */
     @Override
@@ -39,15 +41,15 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
             if (Objects.isNull(baseEntity.getUpdateTime())) {
                 baseEntity.setUpdateTime(current);
             }
-
-            String userId = "test";
+            // 根据Sa-token 获取当前登录用户
+            String userId = Objects.nonNull(StpUtil.getLoginIdDefaultNull()) ? String.valueOf(StpUtil.getLoginIdDefaultNull()) : "test";
             // 当前登录用户不为空，创建人为空，则当前登录用户为创建人
             if (Objects.nonNull(userId) && Objects.isNull(baseEntity.getCreateBy())) {
-                baseEntity.setCreateBy(userId.toString());
+                baseEntity.setCreateBy(userId);
             }
             // 当前登录用户不为空，更新人为空，则当前登录用户为更新人
             if (Objects.nonNull(userId) && Objects.isNull(baseEntity.getUpdateBy())) {
-                baseEntity.setUpdateBy(userId.toString());
+                baseEntity.setUpdateBy(userId);
             }
         }
 
@@ -56,10 +58,14 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         log.debug("更新前处理数据");
+        // 根据Sa-token 获取当前登录用户
+        String userId = Objects.nonNull(StpUtil.getLoginIdDefaultNull()) ? String.valueOf(StpUtil.getLoginIdDefaultNull()) : "test";
         // 更新时间为空，则以当前时间为更新时间
         Object modifyTime = getFieldValByName("updateTime", metaObject);
         if (Objects.isNull(modifyTime)) {
             setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
         }
+        //设置修改用户id
+        setFieldValByName("updateBy", userId, metaObject);
     }
 }

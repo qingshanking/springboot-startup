@@ -28,7 +28,7 @@ public class BaseEntity implements Serializable {
     /**
      * 创建者
      */
-    @TableField("create_by")
+    @TableField(value = "create_by",fill = FieldFill.INSERT)
     private String createBy;
 
     /**
@@ -41,7 +41,7 @@ public class BaseEntity implements Serializable {
     /**
      * 更新者
      */
-    @TableField("update_by")
+    @TableField(value = "update_by",fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
     /**
